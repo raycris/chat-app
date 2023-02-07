@@ -1,4 +1,4 @@
-# chat-app
+# Chat app
 This chat app it's like a private chat with another person who's need create a account to participate in the chat. 
 
 
