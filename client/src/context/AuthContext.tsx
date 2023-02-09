@@ -11,7 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
 import axios, { AxiosResponse } from "axios";
+
 import { StreamChat } from "stream-chat";
+
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type AuthContext = {
   user?: User;
@@ -31,6 +34,9 @@ const Context = createContext<AuthContext | null>(null);
 export function useAuth() {
   return useContext(Context) as AuthContext;
 }
+export function useLoggedInAuth() {
+  return useContext(Context) as AuthContext & Required<Pick<AuthContext, "user">>;
+}
 
 type AuthProviderProps = {
   children: ReactNode;
@@ -38,8 +44,8 @@ type AuthProviderProps = {
 
 const AuthProvider = (props: AuthProviderProps) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>();
-  const [token, setToken] = useState<string>();
+  const [user, setUser] = useLocalStorage<User>("user");
+  const [token, setToken] = useLocalStorage<string>("token");
   const [streamChat, setStreamChat] = useState<StreamChat>();
 
   const signup = useMutation({
