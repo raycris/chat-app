@@ -15,6 +15,7 @@ import { StreamChat } from "stream-chat";
 
 type AuthContext = {
   user?: User;
+  streamChat?: StreamChat;
   signup: UseMutationResult<AxiosResponse, unknown, User>;
   login: UseMutationResult<{ token: string; user: User }, unknown, string>;
 };
@@ -86,7 +87,7 @@ const AuthProvider = (props: AuthProviderProps) => {
   }, [token, user]);
 
   return (
-    <Context.Provider value={{ signup, login, user }}>
+    <Context.Provider value={{ signup, login, user, streamChat }}>
       {props.children}
     </Context.Provider>
   );
