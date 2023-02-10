@@ -2,11 +2,12 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 
 import AuthProvider from "./context/AuthContext";
 
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import { Home } from "./pages/Home";
 import AuthLayout from "./pages/layout/AuthLayout";
 import RootLayout from "./pages/layout/RootLayout";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import NewChannel from "./pages/channel/new";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
           { index: true, element: <Home /> },
           {
             path: "/channel",
-            children: [{ path: "new", element: <h1>New Channel</h1> }],
+            children: [{ path: "new", element: <NewChannel/> }],
           },
         ],
       },

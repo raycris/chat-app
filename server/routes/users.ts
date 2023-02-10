@@ -1,4 +1,5 @@
 import { FastifyInstance } from "fastify";
+
 import { StreamChat } from "stream-chat";
 
 const streamChat = StreamChat.getInstance(
@@ -52,7 +53,7 @@ export async function userRoutes(app: FastifyInstance) {
     const id = TOKEN_USER_ID_MAP.get(token);
     if (id == null) return res.status(400).send();
 
-    await streamChat.revokeUserToken(id, new Date())
-    TOKEN_USER_ID_MAP.delete(token)
+    await streamChat.revokeUserToken(id, new Date());
+    TOKEN_USER_ID_MAP.delete(token);
   });
 }
