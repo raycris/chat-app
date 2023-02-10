@@ -11,3 +11,4 @@ This site using the following stack:
 - Styling - Tailwind CSS
 - Linting - ESLint
 - Formatting - Prettier
+- API - Stream
