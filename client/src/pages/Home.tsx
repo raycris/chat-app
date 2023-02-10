@@ -41,7 +41,7 @@ export const Home = () => {
 
 function Channels({ loadedChannels }: ChannelListMessengerProps) {
   const navigate = useNavigate();
-  const {logout} = useLoggedInAuth()
+  const { logout } = useLoggedInAuth();
   const { setActiveChannel, channel: activeChannel } = useChatContext();
 
   return (
@@ -67,13 +67,17 @@ function Channels({ loadedChannels }: ChannelListMessengerProps) {
                     className="w-10 h-10 rounded-full object-center object-over"
                   />
                 )}
-                <div className="text-ellipsis overflow-hidden whiteespace-nowrap">{channel.data?.name || channel.id}</div>
+                <div className="text-ellipsis overflow-hidden whiteespace-nowrap">
+                  {channel.data?.name || channel.id}
+                </div>
               </button>
             );
           })
         : "No conversations"}
-        <hr className="border-gray-500 mt-auto" />
-        <Button onClick={() => logout.mutate()} disabled={logout.isLoading}>Logout</Button>
+      <hr className="border-gray-500 mt-auto" />
+      <Button onClick={() => logout.mutate()} disabled={logout.isLoading}>
+        Logout
+      </Button>
     </div>
   );
 }
